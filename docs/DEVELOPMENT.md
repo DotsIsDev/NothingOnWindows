@@ -1,0 +1,49 @@
+# Development and validation
+
+This is a native C# / WPF application using Windows Bluetooth RFCOMM APIs. Build on Windows with the .NET 10 SDK. The portable release includes the runtime; source development requires the SDK.
+
+## Checks
+
+```powershell
+dotnet build NothingOnWindows.csproj -c Release
+dotnet run --project tests/ProtocolChecks.csproj -c Release
+```
+
+The initial release passes 321 offline core checks and 314 WPF/window/tray checks. Core checks cover framing and CRC, request/notification correlation, EQ serialization/headroom, invalid input, batteries/charging, firmware gates, all 11 identities, model-specific reads and control mappings, and read-only synchronization.
+
+UI checks cover all six views for all 11 profiles at default and minimum size, embedded photos, profile selection, eight resize edges, the portrait ratio, tray lifecycle, single-instance activation, differing preset graphs, deferred state updates, advanced draft preservation, and rejection of unsupported writes. They inject simulated packets and send no headphone writes.
+
+Run UI checks or capture disconnected screenshots with a built application:
+
+```powershell
+artifacts/releases/v0.1.0/NothingOnWindows/NothingOnWindows.exe --ui-smoke artifacts/ui-smoke.json
+artifacts/releases/v0.1.0/NothingOnWindows/NothingOnWindows.exe --snapshot artifacts/preview.png
+```
+
+Snapshot mode exports Sound, Equalizer, Advanced, Controls, Explore, and Connection images. `--live` requests read-only connected-device data; `--catalog` requests the online catalog. The README uses disconnected previews.
+
+## Hardware validation
+
+Headphone (a), firmware `1.0.1.51`, was tested on October 19, 2026. Tests read battery, firmware, ANC, spatial audio, bass, EQ presets, advanced EQ data/state, low lag, and gestures. Reapplying existing settings produced successful acknowledgements/readbacks. Low lag was briefly changed and restored.
+
+Simple custom EQ was tested with `+1 / -0.5 / +0.5 dB` and `-1 / +0.5 / -0.5 dB` bass/mid/treble profiles. Both read back exactly. The original custom slot, Balanced preset, and advanced EQ state were restored; all nine checked raw setting payloads matched the starting snapshot. Private reports and backups are excluded from public source and packages.
+
+Only Headphone (a) has this hardware verification. Simulated coverage is not proof of compatibility for the other ten profiles. Physical-button synchronization needs further real-device validation.
+
+## Diagnostic commands
+
+- `--probe <report.json>` discovers exactly one recognized paired device and reads its state. It sends no setting writes.
+- `--verify <report.json>` is an explicit Headphone (a)-only write/restore test. It reapplies current settings and briefly changes low lag, with restoration in a `finally` block.
+- `--verify-simple <report.json>` is an explicit Headphone (a)-only EQ write/restore test. It creates a backup, applies two modest profiles, restores the custom slot/preset/advanced state, and verifies nine original raw responses.
+
+Write tests never run during normal startup, packaging, screenshot capture, or offline UI checks. Review reports before sharing; they can contain device names, settings, and raw responses.
+
+## Release packaging
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.0
+```
+
+This produces `artifacts/releases/v0.1.0/` with a self-contained Windows x64 application ZIP, matching source ZIP, and `SHA256SUMS.txt`. Packaging refuses to overwrite an existing release folder. Choose a new version or a fresh `-OutputDirectory` for a rebuild. `-RuntimeVersion` selects the bundled .NET patch; the initial release uses 10.0.13. `-SkipUiChecks` is available for environments without a desktop; run UI checks on a Windows desktop before publishing.
+
+The source archive uses Git's tracked and nonignored file list, including working changes. It omits `.git`, runtime caches, build outputs, research downloads, and local artifacts. Keep new local-only files ignored. The portable application includes `Source.zip`, license/attribution files, image provenance, and documentation.

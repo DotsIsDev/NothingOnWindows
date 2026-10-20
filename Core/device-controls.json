@@ -1,0 +1,5170 @@
+{
+  "B174": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "1.0.1.26"
+    },
+    {
+      "Minimum": "1.0.1.27",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "1.0.1.27"
+    },
+    {
+      "Minimum": "1.0.1.28",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B186": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 24,
+              "Name": "Camera shutter (phone)"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 33,
+              "Name": "Essential Space (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": -4,
+          "Device": 6,
+          "Label": "Roll · Volume down / up",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -5,
+          "Device": 6,
+          "Label": "Left / right · Previous / next track",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -6,
+          "Device": 6,
+          "Label": "Hold left / right · Rewind / fast-forward",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B173": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 33,
+              "Name": "Essential Space (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Case",
+          "Type": 7,
+          "Device": 4,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Case",
+          "Type": 2,
+          "Device": 4,
+          "Label": "Double press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B170": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 33,
+              "Name": "Essential Space (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": -4,
+          "Device": 6,
+          "Label": "Roll · Volume down / up",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -5,
+          "Device": 6,
+          "Label": "Left / right · Previous / next track",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -6,
+          "Device": 6,
+          "Label": "Hold left / right · Rewind / fast-forward",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.74"
+    },
+    {
+      "Minimum": "*.*.1.75",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 32,
+              "Name": "Channel Hop (phone)"
+            },
+            {
+              "Code": 33,
+              "Name": "Essential Space (phone)"
+            },
+            {
+              "Code": 34,
+              "Name": "Cycle EQ presets"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": -4,
+          "Device": 6,
+          "Label": "Roll · Volume down / up",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -5,
+          "Device": 6,
+          "Label": "Left / right · Previous / next track",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -6,
+          "Device": 6,
+          "Label": "Hold left / right · Rewind / fast-forward",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B162": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B192": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 24,
+              "Name": "Camera shutter (phone)"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            }
+          ],
+          "Control": 10,
+          "Group": "Button",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 1,
+          "Device": 6,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": 7,
+          "Device": 6,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Roller",
+          "Type": -4,
+          "Device": 6,
+          "Label": "Roll · Volume down / up",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -5,
+          "Device": 6,
+          "Label": "Left / right · Previous / next track",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Paddle",
+          "Type": -6,
+          "Device": 6,
+          "Label": "Hold left / right · Rewind / fast-forward",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Switch",
+          "Type": -7,
+          "Device": 6,
+          "Label": "Flat EQ switch",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B171": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B155": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.94"
+    },
+    {
+      "Minimum": "*.*.1.95",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B157": [
+    {
+      "Minimum": "*.*.2.0",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    },
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.79"
+    },
+    {
+      "Minimum": "*.*.1.80",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Left earbud",
+          "Type": 1,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 8,
+          "Group": "Right earbud",
+          "Type": 1,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.999"
+    }
+  ],
+  "B181": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Left earbud",
+          "Type": 5,
+          "Device": 2,
+          "Label": "Slide · Volume",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Right earbud",
+          "Type": 5,
+          "Device": 3,
+          "Label": "Slide · Volume",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.74"
+    },
+    {
+      "Minimum": "*.*.1.75",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Left earbud",
+          "Type": 5,
+          "Device": 2,
+          "Label": "Slide · Volume",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Right earbud",
+          "Type": 5,
+          "Device": 3,
+          "Label": "Slide · Volume",
+          "Custom": false
+        }
+      ],
+      "Maximum": "*.*.1.85"
+    },
+    {
+      "Minimum": "*.*.1.86",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple tap",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double tap",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Left earbud",
+          "Type": 5,
+          "Device": 2,
+          "Label": "Slide · Volume",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 5,
+          "Group": "Right earbud",
+          "Type": 5,
+          "Device": 3,
+          "Label": "Slide · Volume",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ],
+  "B190": [
+    {
+      "Minimum": null,
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 11,
+          "Device": 2,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 11,
+          "Device": 3,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "1.0.1.36"
+    },
+    {
+      "Minimum": "1.0.1.37",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 11,
+          "Device": 2,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 11,
+          "Device": 3,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": "1.0.1.60"
+    },
+    {
+      "Minimum": "1.0.1.61",
+      "Controls": [
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 2,
+          "Device": 2,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 2,
+          "Device": 3,
+          "Label": "Double press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 8,
+              "Name": "Previous track"
+            },
+            {
+              "Code": 9,
+              "Name": "Next track"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Triple press",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 7,
+          "Device": 2,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 29,
+              "Name": "Microphone mute"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 7,
+          "Device": 3,
+          "Label": "Press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 9,
+          "Device": 2,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 10,
+              "Name": "Noise control: all modes"
+            },
+            {
+              "Code": 11,
+              "Name": "Voice assistant"
+            },
+            {
+              "Code": 18,
+              "Name": "Volume up"
+            },
+            {
+              "Code": 19,
+              "Name": "Volume down"
+            },
+            {
+              "Code": 20,
+              "Name": "Transparency ↔ off"
+            },
+            {
+              "Code": 21,
+              "Name": "ANC ↔ off"
+            },
+            {
+              "Code": 22,
+              "Name": "ANC ↔ transparency"
+            },
+            {
+              "Code": 31,
+              "Name": "News (phone)"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 9,
+          "Device": 3,
+          "Label": "Double press and hold",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 11,
+          "Device": 2,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [
+            {
+              "Code": 1,
+              "Name": "No action"
+            },
+            {
+              "Code": 37,
+              "Name": "Recording (phone)"
+            }
+          ],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 11,
+          "Device": 3,
+          "Label": "Pinch both earbuds",
+          "Custom": true
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Left earbud",
+          "Type": 3,
+          "Device": 2,
+          "Label": "Single press",
+          "Custom": false
+        },
+        {
+          "Actions": [],
+          "Control": 1,
+          "Group": "Right earbud",
+          "Type": 3,
+          "Device": 3,
+          "Label": "Single press",
+          "Custom": false
+        }
+      ],
+      "Maximum": null
+    }
+  ]
+}

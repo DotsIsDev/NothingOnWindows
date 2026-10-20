@@ -1,0 +1,9 @@
+bin/
+obj/
+.research/
+.vs/
+.dotnet/
+artifacts/
+*.user
+*.suo
+*.log

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets/headphones.ico</ApplicationIcon>
+    <AssemblyName>NothingOnWindows</AssemblyName>
+    <Version>0.1.0</Version>
+    <Product>Nothing on Windows</Product>
+    <Description>Unofficial Windows companion for Nothing audio devices.</Description>
+    <RepositoryUrl>https://github.com/DotsIsDev/NothingOnWindows</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <DebugType>embedded</DebugType>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.research/**;tests/**;artifacts/**;.dotnet/**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup><Using Remove="System.Windows.Forms"/><Using Remove="System.Drawing"/></ItemGroup>
+  <ItemGroup><Resource Include="Assets/headphones.ico"/><Resource Include="Assets/headphone-a-product.png"/><Resource Include="Assets/Devices/*.png"/><EmbeddedResource Include="Core/device-controls.json" LogicalName="NothingOnWindows.device-controls.json"/></ItemGroup>
+  <Target Name="PinReleaseRuntime" BeforeTargets="ProcessFrameworkReferences" Condition="'$(ReleaseRuntimeVersion)' != ''">
+    <ItemGroup>
+      <FrameworkReference Update="Microsoft.NETCore.App;Microsoft.WindowsDesktop.App;Microsoft.WindowsDesktop.App.WPF;Microsoft.WindowsDesktop.App.WindowsForms" RuntimeFrameworkVersion="$(ReleaseRuntimeVersion)" />
+    </ItemGroup>
+  </Target>
+</Project>
