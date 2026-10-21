@@ -170,7 +170,9 @@ public static class UpdatePackage
         foreach(var entry in zip.Entries)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            string name=entry.FullName;
+            // Windows PowerShell's Compress-Archive uses backslashes in ZIP names.
+            // Normalize before the same traversal/root/duplicate checks.
+            string name=entry.FullName.Replace('\\','/');
             if(name=="NothingOnWindows/")continue;
             if(!name.StartsWith("NothingOnWindows/",StringComparison.Ordinal)||((entry.ExternalAttributes>>16)&0xf000)==0xa000||(entry.ExternalAttributes&(int)FileAttributes.ReparsePoint)!=0)throw new InvalidDataException("The update contains an unexpected root or linked file.");
             string relative=name.EndsWith('/')?name[..^1]:name;string path=SafeFile(destination,relative);

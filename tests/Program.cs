@@ -4,6 +4,11 @@ using System.Text.Json;
 
 if(args.Length==2&&args[0]=="--update-result"){File.WriteAllText(args[1]+".restarted","restarted");return;}
 if(args.Length==3&&args[0]=="--apply-update-test"){await UpdateInstaller.ApplyAsync(args[1],true,args[2]);return;}
+if(args.Length==4&&args[0]=="--verify-update-package")
+{
+    UpdatePackage.Extract(args[1],args[2],args[3]);
+    Console.WriteLine($"Verified {UpdatePackage.Validate(Path.Combine(args[2],"NothingOnWindows"),args[3]).Files.Count} packaged files.");return;
+}
 
 int checks = 0;
 void Check(bool value, string name) { if (!value) throw new Exception(name); checks++; }

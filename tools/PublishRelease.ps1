@@ -1,5 +1,5 @@
 param(
-    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.2',
+    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.3',
     [ValidatePattern('^\d+\.\d+\.\d+$')][string]$RuntimeVersion = '10.0.13',
     [string]$OutputDirectory,
     [switch]$SkipUiChecks
@@ -15,6 +15,21 @@ function Invoke-DotNet {
     param([string[]]$Arguments)
     & dotnet @Arguments
     if ($LASTEXITCODE -ne 0) { throw "dotnet $($Arguments[0]) failed with exit code $LASTEXITCODE" }
+}
+
+function New-ReleaseArchive {
+    param([string]$Directory,[string]$Archive,[string]$Prefix='')
+    Add-Type -AssemblyName System.IO.Compression
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $zip=[IO.Compression.ZipFile]::Open($Archive,[IO.Compression.ZipArchiveMode]::Create)
+    try {
+        foreach($file in Get-ChildItem -LiteralPath $Directory -File -Recurse -Force) {
+            $relative=$file.FullName.Substring($Directory.Length+1).Replace('\','/')
+            $entry=$zip.CreateEntry($Prefix+$relative,[IO.Compression.CompressionLevel]::Optimal)
+            $input=[IO.File]::OpenRead($file.FullName)
+            try {$output=$entry.Open();try {$input.CopyTo($output)}finally{$output.Dispose()}}finally{$input.Dispose()}
+        }
+    } finally {$zip.Dispose()}
 }
 
 Push-Location $projectRoot
@@ -46,7 +61,7 @@ try {
         Copy-Item -LiteralPath $source -Destination $destination
     }
     $sourceZip = Join-Path $releaseRoot "NothingOnWindows-v$Version-source.zip"
-    Compress-Archive -Path (Join-Path $sourceRoot '*') -DestinationPath $sourceZip -CompressionLevel Optimal
+    New-ReleaseArchive -Directory $sourceRoot -Archive $sourceZip
     Copy-Item -LiteralPath $sourceZip -Destination (Join-Path $appRoot 'Source.zip')
     foreach ($name in @('README.md', 'LICENSE', 'DEVICE_SUPPORT.md', 'THIRD_PARTY_NOTICES.md')) {
         Copy-Item -LiteralPath (Join-Path $projectRoot $name) -Destination $appRoot
@@ -66,7 +81,7 @@ try {
     }
     @{Version=$Version;Platform='win-x64';Files=$manifestFiles} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $appRoot 'release-manifest.json') -Encoding utf8
     $appZip = Join-Path $releaseRoot "NothingOnWindows-v$Version-win-x64.zip"
-    Compress-Archive -LiteralPath $appRoot -DestinationPath $appZip -CompressionLevel Optimal
+    New-ReleaseArchive -Directory $appRoot -Archive $appZip -Prefix 'NothingOnWindows/'
     $sums = foreach ($archive in @($appZip, $sourceZip)) {
         $hash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
         "$hash  $([IO.Path]::GetFileName($archive))"

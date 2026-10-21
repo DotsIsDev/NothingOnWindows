@@ -1,4 +1,4 @@
-# Nothing on Windows v0.1.2
+# Nothing on Windows v0.1.3
 
 ## In-app updates
 
@@ -10,17 +10,18 @@
 
 ## Download
 
-Download **NothingOnWindows-v0.1.2-win-x64.zip**, extract the complete ZIP, and open `NothingOnWindows/NothingOnWindows.exe`. Exit the older app from its tray menu first. This is the one-time update needed to add the built-in updater to versions 0.1.0 and 0.1.1.
+Download **NothingOnWindows-v0.1.3-win-x64.zip**, extract the complete ZIP, and open `NothingOnWindows/NothingOnWindows.exe`. Exit the older app from its tray menu first. This is the one-time update needed to add the built-in updater to versions 0.1.0 and 0.1.1.
 
 Includes .NET 10.0.13; requires Windows 10 build 19041 or newer, x64, and Bluetooth. Corresponding source and SHA-256 checksums are attached; Source.zip is also inside the portable package.
 
 ## Validation and limits
 
-386 offline core checks and 330 UI/window/tray checks, including isolated update installation, partial failure/rollback, and a separate-process wait/restart test. Tests do not change headphone settings or enable real Windows startup.
+387 offline core checks and 330 UI/window/tray checks, including isolated update installation, partial failure/rollback, and a separate-process wait/restart test. Tests do not change headphone settings or enable real Windows startup.
 
 Updates require a writable, nonlinked app folder. The app is unsigned; integrity is verified against GitHub release metadata and the packaged manifest, without claiming code-signing authentication.
 
 Headphone (a), firmware 1.0.1.51, is hardware-tested; the other ten profiles remain experimental. See the repository's device-support matrix. Firmware updating and proprietary/phone-only features remain outside this release.
 
 Code is AGPL-3.0-or-later. Nothing names and product photographs belong to their respective owners, separately from the code license. Runtime licenses and third-party notices are bundled. This project is not affiliated with or endorsed by Nothing.
+
 

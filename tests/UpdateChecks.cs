@@ -45,6 +45,11 @@ internal static class UpdateChecks
         string packed=Path.Combine(root,"packed");Directory.CreateDirectory(packed);Directory.Move(stage,Path.Combine(packed,"NothingOnWindows"));
         string validZip=Path.Combine(root,"valid.zip");ZipFile.CreateFromDirectory(packed,validZip,CompressionLevel.Fastest,false);
         UpdatePackage.Extract(validZip,Path.Combine(root,"extracted"),"0.2.0");check(File.Exists(Path.Combine(root,"extracted","NothingOnWindows","NothingOnWindows.exe")),"Updater extracts a verified release layout");
+        string windowsZip=Path.Combine(root,"windows.zip");
+        using(var zip=ZipFile.Open(windowsZip,ZipArchiveMode.Create))
+        foreach(string path in Directory.EnumerateFiles(packed,"*",SearchOption.AllDirectories))
+        {var entry=zip.CreateEntry(Path.GetRelativePath(packed,path).Replace('/','\\'));using var input=File.OpenRead(path);using var output=entry.Open();input.CopyTo(output);}
+        UpdatePackage.Extract(windowsZip,Path.Combine(root,"windows-extracted"),"0.2.0");check(File.Exists(Path.Combine(root,"windows-extracted","NothingOnWindows","NothingOnWindows.exe")),"Updater supports real Windows PowerShell backslash ZIP paths");
         string evil=Path.Combine(root,"traversal.zip");using(var zip=ZipFile.Open(evil,ZipArchiveMode.Create)){using var writer=new StreamWriter(zip.CreateEntry("NothingOnWindows/../../escape.txt").Open());writer.Write("bad");}
         Reject(()=>UpdatePackage.Extract(evil,Path.Combine(root,"bad-extract"),"0.2.0"),"Updater blocks ZIP traversal before writing outside staging");
         check(!File.Exists(Path.Combine(root,"escape.txt")),"Rejected archive creates no escaped file");

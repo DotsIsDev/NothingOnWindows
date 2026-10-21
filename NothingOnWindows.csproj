@@ -9,7 +9,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets/headphones.ico</ApplicationIcon>
     <AssemblyName>NothingOnWindows</AssemblyName>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
     <Product>Nothing on Windows</Product>
     <Description>Unofficial Windows companion for Nothing audio devices.</Description>
     <RepositoryUrl>https://github.com/DotsIsDev/NothingOnWindows</RepositoryUrl>
