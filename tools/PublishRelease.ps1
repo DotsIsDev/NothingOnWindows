@@ -1,5 +1,5 @@
 param(
-    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.1',
+    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.2',
     [ValidatePattern('^\d+\.\d+\.\d+$')][string]$RuntimeVersion = '10.0.13',
     [string]$OutputDirectory,
     [switch]$SkipUiChecks
@@ -32,7 +32,7 @@ try {
         $checkProcess = Start-Process -FilePath (Join-Path $appRoot 'NothingOnWindows.exe') -ArgumentList '--ui-smoke', ('"' + $checkReport + '"') -WindowStyle Hidden -Wait -PassThru
         if ($checkProcess.ExitCode -ne 0) { throw "UI checks failed. See $checkReport" }
         $result = Get-Content -LiteralPath $checkReport -Raw | ConvertFrom-Json
-        if ($result.passed -lt 323 -or $result.headphoneWrites -ne $false) { throw 'UI report is incomplete or reported hardware writes.' }
+        if ($result.passed -lt 330 -or $result.headphoneWrites -ne $false) { throw 'UI report is incomplete or reported hardware writes.' }
         Write-Host "Passed $($result.passed) offline UI/window/tray checks."
     }
 
@@ -59,6 +59,12 @@ try {
     Copy-Item -LiteralPath (Join-Path $projectRoot 'Assets/headphones.png') -Destination $assetRoot
     Copy-Item -LiteralPath (Join-Path $projectRoot 'Assets/Devices/sources.json') -Destination (Join-Path $assetRoot 'Devices')
 
+    $manifestFiles=[ordered]@{}
+    foreach($file in Get-ChildItem -LiteralPath $appRoot -File -Recurse | Sort-Object FullName) {
+        $relative=$file.FullName.Substring($appRoot.Length+1).Replace('\','/')
+        $manifestFiles[$relative]=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+    }
+    @{Version=$Version;Platform='win-x64';Files=$manifestFiles} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $appRoot 'release-manifest.json') -Encoding utf8
     $appZip = Join-Path $releaseRoot "NothingOnWindows-v$Version-win-x64.zip"
     Compress-Archive -LiteralPath $appRoot -DestinationPath $appZip -CompressionLevel Optimal
     $sums = foreach ($archive in @($appZip, $sourceZip)) {

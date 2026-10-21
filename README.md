@@ -31,7 +31,7 @@ Explore loads its online catalog on request; the screenshot shows its initial st
 
 ## Download and connect
 
-1. Download `NothingOnWindows-v0.1.1-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
+1. Download `NothingOnWindows-v0.1.2-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
 2. Extract the whole ZIP, then open `NothingOnWindows/NothingOnWindows.exe`. Keep the extracted files together. No installation or administrator access is needed.
 3. Pair your device in **Windows Settings → Bluetooth & devices**, and power it on. For earbuds, take them out of their case.
 4. The app automatically opens its control connection when Windows reports your device connected. If several devices are connected, it prefers your last selection; otherwise use **Connect** to choose one.
@@ -62,6 +62,14 @@ Enable **Settings → Application → Closing app minimizes to tray** to keep th
 Enable **Settings → Application → Start with Windows** to launch quietly in the tray when you sign in. It defaults to off and applies to your Windows account without administrator access. Keep the app in a permanent extracted folder; enable the toggle again after moving it. Windows Startup Apps settings can also control whether it launches.
 
 Automatic discovery runs every five seconds while disconnected, including in the tray. Failed control connections retry after 30 seconds. Only devices already connected through Windows Bluetooth are eligible. The app controls one device at a time and remembers your last successful choice, including a renamed device's model. Choosing **Disconnect** pauses automatic connection until a successful manual reconnect or app restart.
+
+## Updates
+
+Open **Settings → Updates → Check for updates**. When a newer stable release is available, choose **Download and restart**. The app downloads the Windows x64 release from this repository, verifies GitHub's SHA-256 digest and every extracted file, closes completely, installs in the same folder, and reopens itself.
+
+Settings, saved EQ profiles, and the Start with Windows registration are preserved. Replaced files are backed up; if file replacement fails, the updater restores the previous files. The app folder must be writable and cannot be a linked folder. Updates are checked only when you press the button; a GitHub account is not required. Review release notes before installing.
+
+Version 0.1.2 introduces this feature. Earlier versions need this update installed once before they can update themselves. Update downloads, backups, and result reports are kept under `%LOCALAPPDATA%/NothingOnWindows/Updates` for recovery. This unsigned app relies on GitHub HTTPS and its release digests; it does not claim publisher code-signing verification.
 
 ## Device profiles
 
@@ -96,14 +104,14 @@ dotnet run --project NothingOnWindows.csproj -c Release
 Create the portable package, matching source archive, and SHA-256 checksums:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.1
+powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.2
 ```
 
 Packaging runs the core checks and offline UI/tray checks without connecting to headphones or writing their settings. See [development and validation notes](docs/DEVELOPMENT.md) for diagnostics and test coverage.
 
 ## Privacy and issue reports
 
-Device control uses local Bluetooth. Explore contacts Nothing's public Playground service when requested. Settings and saved profiles are stored under `%LOCALAPPDATA%/NothingOnWindows`; there is no project telemetry service.
+Device control uses local Bluetooth. Explore contacts Nothing's public Playground service when requested. Update checks and downloads contact GitHub when requested. Settings and saved profiles are stored under `%LOCALAPPDATA%/NothingOnWindows`; there is no project telemetry service.
 
 When [reporting an issue](https://github.com/DotsIsDev/NothingOnWindows/issues), include the app version, Windows version, model, firmware, and steps to reproduce it. Review connection reports before attaching them: they can contain device names, settings, and raw responses. Local reports and backups are excluded from this repository and release.
 
@@ -114,4 +122,5 @@ Application code and original artwork: **AGPL-3.0-or-later**, with corresponding
 Protocol research and converted device-control definitions draw on [Ear (web)](https://github.com/radiance-project/ear-web) and [swift-nothing-ear](https://github.com/bestK1ngArthur/swift-nothing-ear). Attribution and reference revisions are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Nothing names, branding, and official product photographs belong to their respective owners. Photos are separate from the application's AGPL license; no license to those photos or official endorsement is claimed. Exact image sources are in [Assets/Devices/sources.json](Assets/Devices/sources.json).
+
 

@@ -11,6 +11,26 @@ public sealed class App : Application
     [STAThread]
     public static void Main(string[] args)
     {
+        if(args.Length==2&&args[0]=="--apply-update")
+        {
+            try{UpdateInstaller.ApplyAsync(args[1]).GetAwaiter().GetResult();}
+            catch(Exception ex){System.Windows.MessageBox.Show("The update could not finish. Open the app from its original folder to retry.\n\n"+ex.Message,"Nothing on Windows update");Environment.ExitCode=1;}
+            return;
+        }
+        if(args.Length>=2&&args[0]=="--update-probe")
+        {
+            string output=Path.GetFullPath(args[1]);Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+            try
+            {
+                var updater=new GitHubAppUpdates();
+                var release=updater.CheckAsync(new Version(0,0,0),CancellationToken.None).GetAwaiter().GetResult();
+                PreparedUpdate? prepared=null;
+                if(release!=null&&args.Contains("--download"))prepared=updater.DownloadAsync(release,new Progress<int>(),CancellationToken.None).GetAwaiter().GetResult();
+                File.WriteAllText(output,JsonSerializer.Serialize(new{release=release?.Tag,verifiedDownload=prepared!=null,files=prepared==null?0:UpdatePackage.Validate(Path.Combine(prepared.SessionDirectory,"package","NothingOnWindows"),prepared.Version).Files.Count,installed=false},new JsonSerializerOptions{WriteIndented=true}));
+            }
+            catch(Exception ex){File.WriteAllText(output,JsonSerializer.Serialize(new{error=ex.Message,installed=false}));Environment.ExitCode=1;}
+            return;
+        }
         var app = new App();
         if(args.Contains("--ui-smoke"))
         {
@@ -19,7 +39,7 @@ public sealed class App : Application
             Directory.CreateDirectory(Path.GetDirectoryName(output)!);
             string preferencePath=output+".settings.json";
             new PreferencesStore(preferencePath).Save(new AppPreferences());
-            var window=new MainWindow(preferencePath,new SmokeStartupRegistration());
+            var window=new MainWindow(preferencePath,new SmokeStartupRegistration(),new SmokeAppUpdates());
             window.Loaded+=async(_,_)=>{
                 try{await window.RunUiSmokeAsync(output);app.Shutdown(0);}
                 catch(Exception ex){File.WriteAllText(output,JsonSerializer.Serialize(new{error=ex.ToString()},new JsonSerializerOptions{WriteIndented=true}));window.ExitApplication();app.Shutdown(1);}
@@ -28,7 +48,7 @@ public sealed class App : Application
         }
         if (args.Contains("--snapshot"))
         {
-            var window = new MainWindow();
+            var window = new MainWindow(null,new SmokeStartupRegistration());
             window.Loaded += async (_, _) =>
             {
                 string output = Path.GetFullPath(args.SkipWhile(a => a != "--snapshot").Skip(1).FirstOrDefault() ?? "artifacts/app-preview.png");
@@ -86,6 +106,8 @@ public sealed class App : Application
         using var instance=new SingleInstanceSession();
         if(!instance.IsPrimary){instance.SignalPrimary();return;}
         var main=new MainWindow();
+        int resultIndex=Array.IndexOf(args,"--update-result");
+        if(resultIndex>=0&&resultIndex+1<args.Length)main.ShowUpdateResult(args[resultIndex+1]);
         bool windowsStartup=args.Contains("--startup");
         main.ShowActivated=!windowsStartup;
         app.ShutdownMode=ShutdownMode.OnExplicitShutdown;

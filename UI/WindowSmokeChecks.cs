@@ -206,6 +206,17 @@ public partial class MainWindow
         Check(WindowState==WindowState.Minimized,"Custom minimize button works");
         ShowFromTray();await Idle();Check(IsVisible&&ShowInTaskbar&&WindowState==WindowState.Normal,"Restore from tray works");
         PreviewPage("Connection");await Idle();
+        var updates=(SmokeAppUpdates)appUpdates;
+        Check(updates.Checks==0,"Opening Settings does not contact GitHub automatically");
+        Check(Find<Button>(PageContent,"CheckForUpdatesButton").Content is string updateLabel&&updateLabel=="Check for updates","Settings includes Check for updates button");
+        await CheckForUpdatesAsync();Check(updateStatus.Contains("up to date")&&availableUpdate==null,"Up-to-date response is shown in Settings");
+        updates.ReleaseAvailable=true;await CheckForUpdatesAsync();
+        Check(availableUpdate!=null&&updateAction?.Content is string downloadLabel&&downloadLabel=="Download and restart","New release offers Download and restart");
+        updates.FailDownload=true;await DownloadAndRestartAsync();
+        Check(!windowClosed&&updates.Installs==0&&updateStatus.Contains("not installed"),"Failed download leaves the app open and does not start installation");
+        updates.FailDownload=false;updates.FailCheck=true;await CheckForUpdatesAsync();
+        Check(availableUpdate==null&&updateStatus.Contains("Could not check"),"Update check failure can be retried without an install");
+        updates.FailCheck=false;
         var startup=Find<ToggleButton>(PageContent,"StartWithWindowsToggle");
         Check(startup.IsChecked==false&&startup.Style==FindResource("GlassSwitch"),"Start with Windows defaults off and uses a glass toggle");
         startup.IsChecked=true;startup.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -242,6 +253,12 @@ public partial class MainWindow
         var normalClose=new MainWindow(defaultSettings,new SmokeStartupRegistration());bool normalClosed=false;normalClose.Closed+=(_,_)=>normalClosed=true;normalClose.Show();await Idle();normalClose.InitializeTray();
         normalClose.CloseButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));await Idle();
         Check(normalClosed&&normalClose.tray==null,"Custom close exits and disposes tray when preference is disabled");
+        var installService=new SmokeAppUpdates{ReleaseAvailable=true};
+        var installWindow=new MainWindow(defaultSettings,new SmokeStartupRegistration(),installService);bool installClosed=false;
+        installWindow.Closed+=(_,_)=>installClosed=true;installWindow.Show();await Idle();installWindow.InitializeTray();
+        installWindow.preferences=installWindow.preferences with{CloseToTray=true};
+        await installWindow.CheckForUpdatesAsync();await installWindow.DownloadAndRestartAsync();
+        Check(installService.Installs==1&&installClosed&&installWindow.tray==null,"Verified update hands off installation and exits even with close-to-tray enabled");
         File.WriteAllText(reportPath,JsonSerializer.Serialize(new{passed=checks.Count,checks,syntheticPresetData=true,syntheticDeviceUpdates=true,deviceProfiles=DeviceCatalog.All.Count,modelImages=photoHashes.Count,headphoneWrites=false},new JsonSerializerOptions{WriteIndented=true}));
     }
     private static class NativeSmoke
@@ -260,4 +277,21 @@ internal sealed class SmokeStartupRegistration : IStartupRegistration
         if(FailNext){FailNext=false;throw new IOException("Simulated Windows startup access failure.");}
         Enabled=enabled;
     }
+}
+
+internal sealed class SmokeAppUpdates:IAppUpdates
+{
+    public int Checks {get;private set;}
+    public int Installs {get;private set;}
+    public bool ReleaseAvailable {get;set;}
+    public bool FailCheck {get;set;}
+    public bool FailDownload {get;set;}
+    public Task<AppRelease?> CheckAsync(Version current,CancellationToken token)
+    {
+        Checks++;if(FailCheck)throw new IOException("Simulated offline check.");
+        return Task.FromResult<AppRelease?>(ReleaseAvailable?new AppRelease("v9.0.0",new Version(9,0,0),"test.zip",new Uri("https://github.com/DotsIsDev/NothingOnWindows/releases/tag/v9.0.0"),new string('a',64),1):null);
+    }
+    public Task<PreparedUpdate> DownloadAsync(AppRelease release,IProgress<int> progress,CancellationToken token)
+    {if(FailDownload)throw new IOException("Simulated download failure.");progress.Report(100);return Task.FromResult(new PreparedUpdate("synthetic-update",release.Version.ToString()));}
+    public void BeginInstall(PreparedUpdate update,string targetDirectory)=>Installs++;
 }

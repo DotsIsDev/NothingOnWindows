@@ -1,30 +1,26 @@
-# Nothing on Windows v0.1.1
+# Nothing on Windows v0.1.2
 
-Automatic connection and Windows startup support for the unofficial Nothing audio companion.
+## In-app updates
 
-## New
-
-- Automatically opens the control connection for an already connected Nothing Bluetooth device, at app launch and after later Bluetooth connections or drops. Checks every five seconds; failed control connections retry after 30 seconds.
-- Prefers your last successful device when several are connected. Renamed devices retain their selected model. Ambiguous devices still use the manual chooser.
-- Choosing Disconnect pauses automatic connection until you reconnect manually or restart the app.
-- **Settings → Application → Start with Windows**: optional, off by default, launches quietly in the tray at sign-in. Registration is per Windows account and needs no administrator access. Enable it again after moving the extracted app folder.
-- Shutdown cancels pending Bluetooth connection work. Diagnostics and offline checks do not auto-connect unless explicitly requested.
+- Added **Settings → Updates → Check for updates**, with the installed version and clear up-to-date, available, progress, and failure states.
+- **Download and restart** retrieves newer stable Windows x64 releases from this GitHub repository. No GitHub sign-in is needed.
+- Downloads must match GitHub's SHA-256 digest; extracted files must match the release manifest. Unsafe paths, linked files, mismatched versions, unsupported platforms, and incomplete downloads are rejected.
+- A separate updater waits for the app to exit, backs up and replaces managed files in the same folder, and restarts it. Failed replacement rolls back the changed files. Unknown user files, local settings/profiles, and startup registration are preserved.
+- Unsaved EQ drafts prompt before restarting. Explicit Exit cancels a pending download. Downloads and backups remain in the local update cache for recovery.
 
 ## Download
 
-- **NothingOnWindows-v0.1.1-win-x64.zip**: portable Windows x64 app including .NET 10.0.13. Extract the whole ZIP and open `NothingOnWindows/NothingOnWindows.exe`. Requires Windows 10 build 19041 or newer and Bluetooth.
-- **NothingOnWindows-v0.1.1-source.zip**: corresponding source, also included as `Source.zip` inside the portable package.
-- **SHA256SUMS.txt**: checksums for both archives.
+Download **NothingOnWindows-v0.1.2-win-x64.zip**, extract the complete ZIP, and open `NothingOnWindows/NothingOnWindows.exe`. Exit the older app from its tray menu first. This is the one-time update needed to add the built-in updater to versions 0.1.0 and 0.1.1.
 
-Exit the older app from its tray menu before opening the update. The app remains unsigned.
+Includes .NET 10.0.13; requires Windows 10 build 19041 or newer, x64, and Bluetooth. Corresponding source and SHA-256 checksums are attached; Source.zip is also inside the portable package.
 
-## Validation and compatibility
+## Validation and limits
 
-341 offline core checks and 323 UI/window/tray checks. Startup tests use an isolated fake service and never enable real Windows startup. Packaging sends no headphone writes.
+386 offline core checks and 330 UI/window/tray checks, including isolated update installation, partial failure/rollback, and a separate-process wait/restart test. Tests do not change headphone settings or enable real Windows startup.
 
-Headphone (a), firmware 1.0.1.51, is the only hardware-tested model. The other ten profiles remain experimental. See [device support](https://github.com/DotsIsDev/NothingOnWindows/blob/main/DEVICE_SUPPORT.md) for firmware requirements and limitations.
+Updates require a writable, nonlinked app folder. The app is unsigned; integrity is verified against GitHub release metadata and the packaged manifest, without claiming code-signing authentication.
 
-Code is AGPL-3.0-or-later. Runtime licenses and third-party attribution are bundled. Nothing product photos and names belong to their respective owners and are separate from the code license. This project is not affiliated with or endorsed by Nothing.
+Headphone (a), firmware 1.0.1.51, is hardware-tested; the other ten profiles remain experimental. See the repository's device-support matrix. Firmware updating and proprietary/phone-only features remain outside this release.
 
-Live automatic discovery and control connection were verified with Headphone (a) connected to Windows. Device settings were read without any headphone writes.
+Code is AGPL-3.0-or-later. Nothing names and product photographs belong to their respective owners, separately from the code license. Runtime licenses and third-party notices are bundled. This project is not affiliated with or endorsed by Nothing.
 

@@ -36,8 +36,9 @@ public partial class MainWindow : Window
 
     public MainWindow(string? preferencesPath = null):this(preferencesPath,new WindowsStartupRegistration()) { }
 
-    internal MainWindow(string? preferencesPath,IStartupRegistration startupRegistration)
+    internal MainWindow(string? preferencesPath,IStartupRegistration startupRegistration,IAppUpdates? appUpdates=null)
     {
+        this.appUpdates=appUpdates??new GitHubAppUpdates();
         this.startupRegistration=startupRegistration;
         InitializeComponent();
         MaxHeight=Math.Max(MinHeight,SystemParameters.WorkArea.Height-32);
@@ -459,6 +460,7 @@ public partial class MainWindow : Window
             catch(Exception ex){startWithWindows.IsChecked=startupEnabled;StatusLabel.Text="Could not change startup settings: "+ex.Message;}
         };
         app.Children.Add(startupRow);
+        RenderUpdates();
         var deviceProfile=Card("Device profile","Recognized models are selected automatically when you connect. You can preview any model while disconnected.");
         var models=new ComboBox{Name="DeviceProfileSelector",ItemsSource=DeviceCatalog.All,SelectedItem=client.Profile,IsEnabled=!client.Connected&&!busy,HorizontalAlignment=HorizontalAlignment.Stretch};
         System.Windows.Automation.AutomationProperties.SetName(models,"Device profile");

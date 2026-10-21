@@ -2,6 +2,9 @@ using NothingOnWindows.Core;
 using System.Text;
 using System.Text.Json;
 
+if(args.Length==2&&args[0]=="--update-result"){File.WriteAllText(args[1]+".restarted","restarted");return;}
+if(args.Length==3&&args[0]=="--apply-update-test"){await UpdateInstaller.ApplyAsync(args[1],true,args[2]);return;}
+
 int checks = 0;
 void Check(bool value, string name) { if (!value) throw new Exception(name); checks++; }
 void Reject(Action action, string name) { try { action(); } catch (ArgumentException) { checks++; return; } catch (InvalidDataException) { checks++; return; } throw new Exception(name); }
@@ -208,4 +211,5 @@ try
     File.WriteAllText(rememberedPath,"{\"CloseToTray\":true}");Check(store.Load().LastDeviceId==null&&store.Load().CloseToTray,"Earlier settings migrate without a remembered device");
 }
 finally{if(File.Exists(rememberedPath))File.Delete(rememberedPath);}
+await UpdateChecks.RunAsync(Check);
 Console.WriteLine($"Passed {checks} total checks.");
