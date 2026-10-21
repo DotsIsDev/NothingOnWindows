@@ -8,6 +8,7 @@ public sealed class TrayController : IDisposable
     private readonly Forms.NotifyIcon icon;
     private readonly Forms.ContextMenuStrip menu;
     private readonly Drawing.Icon artwork;
+    private Action? updateClicked;
     public bool Visible => icon.Visible;
     public TrayController(Action show, Action settings, Action exit)
     {
@@ -19,9 +20,16 @@ public sealed class TrayController : IDisposable
         menu.Items.Add("Exit", null, (_, _) => exit());
         icon = new Forms.NotifyIcon { Icon = artwork, Text = "Nothing on Windows", ContextMenuStrip = menu };
         icon.DoubleClick += (_, _) => show();
+        icon.BalloonTipClicked+=(_,_)=>updateClicked?.Invoke();
         icon.Visible = true;
     }
     public void Update(string text) => icon.Text = text.Length > 63 ? text[..63] : text;
+    public void ShowUpdateAvailable(string version,Action openUpdates)
+    {
+        updateClicked=openUpdates;
+        icon.ShowBalloonTip(10000,"Nothing on Windows update",$"Version {version} is available. Click to review and install.",Forms.ToolTipIcon.Info);
+    }
+    internal void InvokeUpdateNotification()=>updateClicked?.Invoke();
     internal void InvokeMenu(int index) => menu.Items[index].PerformClick();
     public void Dispose() { icon.Visible = false; icon.Dispose(); menu.Dispose(); artwork.Dispose(); }
     private static Drawing.Icon CreateIcon()

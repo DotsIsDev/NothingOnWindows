@@ -5,6 +5,7 @@ namespace NothingOnWindows.Core;
 public sealed record AppPreferences
 {
     public bool CloseToTray { get; init; }
+    public bool CheckUpdatesAtStartup { get; init; }
     public string? LastDeviceId { get; init; }
     public string? LastDeviceModel { get; init; }
 }

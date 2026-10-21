@@ -116,6 +116,7 @@ public sealed class App : Application
             try{main.InitializeTray();}
             catch(Exception ex){System.Windows.MessageBox.Show(main,"The tray icon is unavailable. Closing the window will exit the app.\n\n"+ex.Message,"Nothing on Windows");}
             if(windowsStartup)main.HideForWindowsStartup();
+            _=main.CheckForUpdatesAtStartupAsync();
             await main.StartAutomaticConnection();
         };
         instance.Listen(()=>app.Dispatcher.BeginInvoke(main.ShowFromTray));

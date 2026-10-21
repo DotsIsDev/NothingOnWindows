@@ -214,6 +214,10 @@ try
     store.Save(new AppPreferences{CloseToTray=true,LastDeviceId=autoA.Id,LastDeviceModel=autoA.Profile.Id});
     var remembered=store.Load();Check(remembered.CloseToTray&&remembered.LastDeviceId==autoA.Id&&remembered.LastDeviceModel==autoA.Profile.Id,"Remembered device and model persist with existing tray preference");
     File.WriteAllText(rememberedPath,"{\"CloseToTray\":true}");Check(store.Load().LastDeviceId==null&&store.Load().CloseToTray,"Earlier settings migrate without a remembered device");
+    Check(!store.Load().CheckUpdatesAtStartup,"Earlier settings keep automatic update checks off");
+    store.Save(new AppPreferences{CloseToTray=true,CheckUpdatesAtStartup=true,LastDeviceId=autoA.Id,LastDeviceModel=autoA.Profile.Id});
+    var automaticPreferences=store.Load();Check(automaticPreferences.CheckUpdatesAtStartup&&automaticPreferences.CloseToTray&&automaticPreferences.LastDeviceId==autoA.Id,"Automatic update preference persists without changing tray or device preferences");
+    store.Save(automaticPreferences with{CheckUpdatesAtStartup=false});Check(!store.Load().CheckUpdatesAtStartup&&store.Load().LastDeviceModel==autoA.Profile.Id,"Automatic update checks can be disabled while retaining the device model");
 }
 finally{if(File.Exists(rememberedPath))File.Delete(rememberedPath);}
 await UpdateChecks.RunAsync(Check);

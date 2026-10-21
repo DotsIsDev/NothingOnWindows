@@ -45,7 +45,9 @@
    <Button x:Name="MinimizeButton" Grid.Column="2" Content="—" Click="Minimize_Click" AutomationProperties.Name="Minimize" ToolTip="Minimize" shell:WindowChrome.IsHitTestVisibleInChrome="True" Background="Transparent" Padding="0" Margin="0" Width="32" Height="30"/>
    <Button x:Name="CloseButton" Grid.Column="3" Content="×" Click="Close_Click" AutomationProperties.Name="Close" ToolTip="Close" shell:WindowChrome.IsHitTestVisibleInChrome="True" Background="Transparent" FontSize="20" Padding="0" Margin="0" Width="32" Height="30"/>
   </Grid>
-  <ScrollViewer x:Name="PageScroll" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="14,6,14,0">
+  <DockPanel Grid.Row="1">
+   <Button x:Name="UpdateBanner" DockPanel.Dock="Top" Visibility="Collapsed" Click="UpdateBanner_Click" Margin="14,6,14,0" Padding="12,8" AutomationProperties.Name="Review available app update"><TextBlock x:Name="UpdateBannerText" FontSize="11"/></Button>
+  <ScrollViewer x:Name="PageScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="14,6,14,0">
    <StackPanel>
     <StackPanel x:Name="DevicePanel" Margin="0,0,0,14">
      <Image x:Name="ProductPhoto" Source="Assets/headphone-a-product.png" Width="132" Height="132" Stretch="Uniform" HorizontalAlignment="Center" Margin="0,0,0,8" RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="Nothing Headphone (a), black product photo"/>
@@ -59,6 +61,7 @@
     <StackPanel x:Name="PageContent"/>
    </StackPanel>
   </ScrollViewer>
+  </DockPanel>
   <Border Grid.Row="2" Background="#14FFFFFF" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="17" Margin="10,4,10,0"><UniformGrid x:Name="Navigation" Columns="5" VerticalAlignment="Center" Margin="3,0"/></Border>
   <TextBlock x:Name="StatusLabel" Grid.Row="3" Text="Connect your headphones to begin." FontSize="10" Foreground="#AAAAAA" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="14,0,14,4" VerticalAlignment="Center" ToolTip="{Binding Text,RelativeSource={RelativeSource Self}}" AutomationProperties.LiveSetting="Polite"/>
  </Grid></Border>

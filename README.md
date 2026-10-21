@@ -31,7 +31,7 @@ Explore loads its online catalog on request; the screenshot shows its initial st
 
 ## Download and connect
 
-1. Download `NothingOnWindows-v0.1.3-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
+1. Download `NothingOnWindows-v0.1.4-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
 2. Extract the whole ZIP, then open `NothingOnWindows/NothingOnWindows.exe`. Keep the extracted files together. No installation or administrator access is needed.
 3. Pair your device in **Windows Settings → Bluetooth & devices**, and power it on. For earbuds, take them out of their case.
 4. The app automatically opens its control connection when Windows reports your device connected. If several devices are connected, it prefers your last selection; otherwise use **Connect** to choose one.
@@ -67,7 +67,9 @@ Automatic discovery runs every five seconds while disconnected, including in the
 
 Open **Settings → Updates → Check for updates**. When a newer stable release is available, choose **Download and restart**. The app downloads the Windows x64 release from this repository, verifies GitHub's SHA-256 digest and every extracted file, closes completely, installs in the same folder, and reopens itself.
 
-Settings, saved EQ profiles, and the Start with Windows registration are preserved. Replaced files are backed up; if file replacement fails, the updater restores the previous files. The app folder must be writable and cannot be a linked folder. Updates are checked only when you press the button; a GitHub account is not required. Review release notes before installing.
+Settings, saved EQ profiles, and the Start with Windows registration are preserved. Replaced files are backed up; if file replacement fails, the updater restores the previous files. The app folder must be writable and cannot be a linked folder. A GitHub account is not required. Review release notes before installing.
+
+Enable **Settings → Updates → Check for updates at startup** to check immediately and once on each later launch, including when starting in the tray. The toggle defaults to off. A new release shows a clickable Windows tray notification and a persistent in-app notice; clicking either opens the update controls. Each release is notified once per app run. Up-to-date and failed background checks stay quiet. Windows notification settings may suppress the tray notification; the in-app notice remains available. Automatic checks never download or install updates.
 
 Version 0.1.3 introduces this feature. Earlier versions need this update installed once before they can update themselves. Update downloads, backups, and result reports are kept under `%LOCALAPPDATA%/NothingOnWindows/Updates` for recovery. This unsigned app relies on GitHub HTTPS and its release digests; it does not claim publisher code-signing verification.
 
@@ -104,7 +106,7 @@ dotnet run --project NothingOnWindows.csproj -c Release
 Create the portable package, matching source archive, and SHA-256 checksums:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.3
+powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.4
 ```
 
 Packaging runs the core checks and offline UI/tray checks without connecting to headphones or writing their settings. See [development and validation notes](docs/DEVELOPMENT.md) for diagnostics and test coverage.
@@ -122,6 +124,7 @@ Application code and original artwork: **AGPL-3.0-or-later**, with corresponding
 Protocol research and converted device-control definitions draw on [Ear (web)](https://github.com/radiance-project/ear-web) and [swift-nothing-ear](https://github.com/bestK1ngArthur/swift-nothing-ear). Attribution and reference revisions are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Nothing names, branding, and official product photographs belong to their respective owners. Photos are separate from the application's AGPL license; no license to those photos or official endorsement is claimed. Exact image sources are in [Assets/Devices/sources.json](Assets/Devices/sources.json).
+
 
 
 

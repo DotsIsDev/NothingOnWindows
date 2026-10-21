@@ -259,6 +259,65 @@ public partial class MainWindow
         installWindow.preferences=installWindow.preferences with{CloseToTray=true};
         await installWindow.CheckForUpdatesAsync();await installWindow.DownloadAndRestartAsync();
         Check(installService.Installs==1&&installClosed&&installWindow.tray==null,"Verified update hands off installation and exits even with close-to-tray enabled");
+        string automaticSettings=reportPath+".automatic-updates.settings.json";
+        new PreferencesStore(automaticSettings).Save(new AppPreferences{CloseToTray=true,CheckUpdatesAtStartup=true,LastDeviceId="synthetic-device"});
+        var automaticService=new SmokeAppUpdates{ReleaseAvailable=true};
+        var automaticWindow=new MainWindow(automaticSettings,new SmokeStartupRegistration(),automaticService);
+        int notices=0;Action? openNotice=null;
+        automaticWindow.updateNotificationOverride=(version,open)=>{notices++;openNotice=open;};
+        automaticWindow.Show();await Idle();automaticWindow.InitializeTray();automaticWindow.HideForWindowsStartup();
+        await automaticWindow.CheckForUpdatesAtStartupAsync();
+        Check(automaticService.Checks==1&&notices==1&&automaticWindow.availableUpdate!=null,"Enabled startup check discovers and notifies about a new release");
+        Check(!automaticWindow.IsVisible&&automaticWindow.UpdateBanner.Visibility==Visibility.Visible,"Startup check leaves the tray-started window hidden and retains an in-app notice");
+        await automaticWindow.CheckForUpdatesAtStartupAsync();
+        Check(automaticService.Checks==1,"Startup update check runs once per app instance");
+        Check(automaticService.Downloads==0&&automaticService.Installs==0,"Automatic checking never downloads or installs a release");
+        openNotice!();await Idle();
+        Check(automaticWindow.IsVisible&&automaticWindow.page=="Connection","Clicking the notification opens Settings without installing");
+        automaticWindow.PreviewPage("Sound");automaticWindow.UpdateBanner.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));await Idle();
+        Check(automaticWindow.page=="Connection","Persistent update banner opens update settings");
+        await automaticWindow.CheckForUpdatesAsync(true);
+        Check(notices==1,"The same release is notified only once per app run");
+        var automaticToggle=Find<ToggleButton>(automaticWindow.PageContent,"AutomaticUpdatesToggle");
+        Check(automaticToggle.Style==automaticWindow.FindResource("GlassSwitch")&&automaticToggle.IsChecked==true,"Automatic update preference uses the accessible glass toggle");
+        automaticToggle.IsChecked=false;automaticToggle.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));await Idle();
+        Check(!automaticWindow.preferencesStore.Load().CheckUpdatesAtStartup&&automaticWindow.preferences.CloseToTray&&automaticWindow.preferences.LastDeviceId=="synthetic-device","Disabling startup checks persists and preserves other preferences");
+        int checksBeforeEnable=automaticService.Checks;
+        automaticToggle.IsChecked=true;automaticToggle.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));await Idle();
+        Check(automaticWindow.preferencesStore.Load().CheckUpdatesAtStartup&&automaticService.Checks==checksBeforeEnable+1,"Enabling startup checks saves the choice and checks immediately");
+        automaticWindow.Height=600;await Idle();
+        foreach(string view in new[]{"Sound","Equalizer","Advanced","Controls","Explore","Connection"})
+        {automaticWindow.PreviewPage(view);await Idle();Check(automaticWindow.PageScroll.ExtentWidth<=automaticWindow.PageScroll.ViewportWidth+1,"Update banner fits minimum portrait layout: "+view);}
+        automaticWindow.ExitApplication();await Idle();
+        var disabledService=new SmokeAppUpdates();
+        var disabledWindow=new MainWindow(defaultSettings,new SmokeStartupRegistration(),disabledService);
+        disabledWindow.updateNotificationOverride=(_,_)=>throw new InvalidOperationException("Unexpected notification");
+        await disabledWindow.CheckForUpdatesAtStartupAsync();
+        Check(disabledService.Checks==0&&!disabledWindow.preferences.CheckUpdatesAtStartup,"Default-off startup check does not contact GitHub");
+        await disabledWindow.CheckForUpdatesAsync();Check(disabledService.Checks==1,"Manual update check remains available when startup checks are off");
+        disabledWindow.ExitApplication();
+        var quietService=new SmokeAppUpdates();
+        var quietWindow=new MainWindow(automaticSettings,new SmokeStartupRegistration(),quietService);int quietNotices=0;
+        quietWindow.updateNotificationOverride=(_,_)=>quietNotices++;
+        await quietWindow.CheckForUpdatesAtStartupAsync();
+        Check(quietNotices==0&&quietWindow.UpdateBanner.Visibility==Visibility.Collapsed,"Up-to-date startup checks stay quiet");
+        quietService.FailCheck=true;string quietStatus=quietWindow.StatusLabel.Text;await quietWindow.CheckForUpdatesAsync(true);
+        Check(quietNotices==0&&quietWindow.StatusLabel.Text==quietStatus&&quietWindow.updateStatus.Contains("Could not check"),"Background check failure stays in Settings without interrupting device status");
+        quietWindow.ExitApplication();
+        var delayedService=new SmokeAppUpdates{Gate=new TaskCompletionSource<AppRelease?>(TaskCreationOptions.RunContinuationsAsynchronously)};
+        var delayedWindow=new MainWindow(automaticSettings,new SmokeStartupRegistration(),delayedService);int delayedNotices=0;
+        delayedWindow.updateNotificationOverride=(_,_)=>delayedNotices++;
+        var delayedCheck=delayedWindow.CheckForUpdatesAtStartupAsync();
+        await delayedWindow.CheckForUpdatesAsync();Check(delayedService.Checks==1,"Manual checking shares a pending startup check instead of duplicating requests");
+        delayedWindow.preferences=delayedWindow.preferences with{CheckUpdatesAtStartup=false};
+        delayedService.Gate.SetResult(SmokeAppUpdates.NewRelease);await delayedCheck;
+        Check(delayedNotices==0,"Turning off the preference during a check suppresses its notification");
+        delayedWindow.ExitApplication();
+        var closingService=new SmokeAppUpdates{Gate=new TaskCompletionSource<AppRelease?>(TaskCreationOptions.RunContinuationsAsynchronously)};
+        var closingWindow=new MainWindow(automaticSettings,new SmokeStartupRegistration(),closingService);int closingNotices=0;
+        closingWindow.updateNotificationOverride=(_,_)=>closingNotices++;
+        var closingCheck=closingWindow.CheckForUpdatesAtStartupAsync();closingWindow.ExitApplication();await closingCheck;
+        Check(closingNotices==0&&closingWindow.availableUpdate==null,"Closing cancels a pending startup check without a late notification");
         File.WriteAllText(reportPath,JsonSerializer.Serialize(new{passed=checks.Count,checks,syntheticPresetData=true,syntheticDeviceUpdates=true,deviceProfiles=DeviceCatalog.All.Count,modelImages=photoHashes.Count,headphoneWrites=false},new JsonSerializerOptions{WriteIndented=true}));
     }
     private static class NativeSmoke
@@ -283,15 +342,18 @@ internal sealed class SmokeAppUpdates:IAppUpdates
 {
     public int Checks {get;private set;}
     public int Installs {get;private set;}
+    public int Downloads {get;private set;}
+    public TaskCompletionSource<AppRelease?>? Gate {get;set;}
+    public static AppRelease NewRelease=>new("v9.0.0",new Version(9,0,0),"test.zip",new Uri("https://github.com/DotsIsDev/NothingOnWindows/releases/tag/v9.0.0"),new string('a',64),1);
     public bool ReleaseAvailable {get;set;}
     public bool FailCheck {get;set;}
     public bool FailDownload {get;set;}
     public Task<AppRelease?> CheckAsync(Version current,CancellationToken token)
     {
         Checks++;if(FailCheck)throw new IOException("Simulated offline check.");
-        return Task.FromResult<AppRelease?>(ReleaseAvailable?new AppRelease("v9.0.0",new Version(9,0,0),"test.zip",new Uri("https://github.com/DotsIsDev/NothingOnWindows/releases/tag/v9.0.0"),new string('a',64),1):null);
+        return Gate?.Task.WaitAsync(token)??Task.FromResult<AppRelease?>(ReleaseAvailable?NewRelease:null);
     }
     public Task<PreparedUpdate> DownloadAsync(AppRelease release,IProgress<int> progress,CancellationToken token)
-    {if(FailDownload)throw new IOException("Simulated download failure.");progress.Report(100);return Task.FromResult(new PreparedUpdate("synthetic-update",release.Version.ToString()));}
+    {Downloads++;if(FailDownload)throw new IOException("Simulated download failure.");progress.Report(100);return Task.FromResult(new PreparedUpdate("synthetic-update",release.Version.ToString()));}
     public void BeginInstall(PreparedUpdate update,string targetDirectory)=>Installs++;
 }
