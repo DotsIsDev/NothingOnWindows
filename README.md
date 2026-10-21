@@ -31,10 +31,10 @@ Explore loads its online catalog on request; the screenshot shows its initial st
 
 ## Download and connect
 
-1. Download `NothingOnWindows-v0.1.0-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
+1. Download `NothingOnWindows-v0.1.1-win-x64.zip` from [Releases](https://github.com/DotsIsDev/NothingOnWindows/releases/latest).
 2. Extract the whole ZIP, then open `NothingOnWindows/NothingOnWindows.exe`. Keep the extracted files together. No installation or administrator access is needed.
 3. Pair your device in **Windows Settings → Bluetooth & devices**, and power it on. For earbuds, take them out of their case.
-4. Select **Connect** in the app. If several recognized devices are paired, choose the one to control.
+4. The app automatically opens its control connection when Windows reports your device connected. If several devices are connected, it prefers your last selection; otherwise use **Connect** to choose one.
 
 The portable package includes the .NET runtime. It targets **Windows 10 version 2004 (build 19041) or newer, x64**, with Bluetooth support. The executable is currently unsigned. Exit an older copy from its tray menu before launching an update.
 
@@ -55,9 +55,13 @@ Available controls depend on the selected model, firmware, and successful device
 | Controls | Model- and firmware-specific button, roller, earbud, and case assignments; fixed actions are labeled |
 | Device settings | Battery/charging, firmware, low lag, and wearing detection where exposed |
 | Live updates | Device notifications and read-only polling keep Sound and EQ in sync with physical controls |
-| Desktop behavior | Resizable 11:20 portrait window, custom Minimize/Close, single-instance activation, and system tray menu |
+| Desktop behavior | Resizable 11:20 portrait window, custom Minimize/Close, system tray menu, and optional Start with Windows |
 
 Enable **Settings → Application → Closing app minimizes to tray** to keep the connection active when closing the window. This defaults to off. The tray menu offers **Open**, **Settings**, and **Exit**; Exit always quits.
+
+Enable **Settings → Application → Start with Windows** to launch quietly in the tray when you sign in. It defaults to off and applies to your Windows account without administrator access. Keep the app in a permanent extracted folder; enable the toggle again after moving it. Windows Startup Apps settings can also control whether it launches.
+
+Automatic discovery runs every five seconds while disconnected, including in the tray. Failed control connections retry after 30 seconds. Only devices already connected through Windows Bluetooth are eligible. The app controls one device at a time and remembers your last successful choice, including a renamed device's model. Choosing **Disconnect** pauses automatic connection until a successful manual reconnect or app restart.
 
 ## Device profiles
 
@@ -71,7 +75,7 @@ See the [full capability and firmware matrix](DEVICE_SUPPORT.md) before using an
 
 ## Current limits
 
-- Firmware updating, automatic reconnect, startup registration, and a signed installer are not included.
+- Firmware updating and a signed installer are not included.
 - Nothing X QR-code sharing is not implemented. Import/export uses this app's JSON profile format.
 - Playground contains community profiles hosted by Nothing; it is not presented as Nothing-authored curated presets.
 - Personal Sound setup, Auracast, proprietary Headphone (1) Pro Audiodo scenes and driver-specific EQ, and phone-only integrations are not implemented. Mapping a phone action does not add its integration to Windows.
@@ -92,7 +96,7 @@ dotnet run --project NothingOnWindows.csproj -c Release
 Create the portable package, matching source archive, and SHA-256 checksums:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.0
+powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.1
 ```
 
 Packaging runs the core checks and offline UI/tray checks without connecting to headphones or writing their settings. See [development and validation notes](docs/DEVELOPMENT.md) for diagnostics and test coverage.
@@ -110,3 +114,4 @@ Application code and original artwork: **AGPL-3.0-or-later**, with corresponding
 Protocol research and converted device-control definitions draw on [Ear (web)](https://github.com/radiance-project/ear-web) and [swift-nothing-ear](https://github.com/bestK1ngArthur/swift-nothing-ear). Attribution and reference revisions are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Nothing names, branding, and official product photographs belong to their respective owners. Photos are separate from the application's AGPL license; no license to those photos or official endorsement is claimed. Exact image sources are in [Assets/Devices/sources.json](Assets/Devices/sources.json).
+

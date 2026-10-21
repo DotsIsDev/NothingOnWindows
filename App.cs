@@ -19,7 +19,7 @@ public sealed class App : Application
             Directory.CreateDirectory(Path.GetDirectoryName(output)!);
             string preferencePath=output+".settings.json";
             new PreferencesStore(preferencePath).Save(new AppPreferences());
-            var window=new MainWindow(preferencePath);
+            var window=new MainWindow(preferencePath,new SmokeStartupRegistration());
             window.Loaded+=async(_,_)=>{
                 try{await window.RunUiSmokeAsync(output);app.Shutdown(0);}
                 catch(Exception ex){File.WriteAllText(output,JsonSerializer.Serialize(new{error=ex.ToString()},new JsonSerializerOptions{WriteIndented=true}));window.ExitApplication();app.Shutdown(1);}
@@ -35,6 +35,12 @@ public sealed class App : Application
                 try
                 {
                     if (args.Contains("--live")) await window.ConnectForPreviewAsync();
+                    if (args.Contains("--auto"))
+                    {
+                        await window.StartAutomaticConnection();
+                        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+                        File.WriteAllText(output+".connection.json",JsonSerializer.Serialize(new{connected=window.AutomaticPreviewConnected,readOnly=true,status=window.AutomaticPreviewStatus,details=window.AutomaticPreviewDetails},new JsonSerializerOptions{WriteIndented=true}));
+                    }
                     if (args.Contains("--catalog")) await window.LoadCatalogForPreviewAsync();
                     foreach (string page in new[] { "Sound", "Equalizer", "Advanced", "Controls", "Explore", "Connection" })
                     {
@@ -80,11 +86,15 @@ public sealed class App : Application
         using var instance=new SingleInstanceSession();
         if(!instance.IsPrimary){instance.SignalPrimary();return;}
         var main=new MainWindow();
+        bool windowsStartup=args.Contains("--startup");
+        main.ShowActivated=!windowsStartup;
         app.ShutdownMode=ShutdownMode.OnExplicitShutdown;
         main.Closed+=(_,_)=>app.Shutdown();
-        main.Loaded+=(_,_)=>{
+        main.Loaded+=async(_,_)=>{
             try{main.InitializeTray();}
             catch(Exception ex){System.Windows.MessageBox.Show(main,"The tray icon is unavailable. Closing the window will exit the app.\n\n"+ex.Message,"Nothing on Windows");}
+            if(windowsStartup)main.HideForWindowsStartup();
+            await main.StartAutomaticConnection();
         };
         instance.Listen(()=>app.Dispatcher.BeginInvoke(main.ShowFromTray));
         app.Run(main);

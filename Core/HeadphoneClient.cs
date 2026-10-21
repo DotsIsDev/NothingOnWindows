@@ -7,8 +7,6 @@ using Windows.Storage.Streams;
 
 namespace NothingOnWindows.Core;
 
-public sealed record PairedHeadphone(string Id,string Name,DeviceProfile Profile) { public override string ToString() => Name; }
-
 public sealed class HeadphoneClient : IDisposable
 {
     public static readonly Guid ServiceId = Guid.Parse("aeac4a03-dff5-498f-843a-34487cf133eb");
@@ -22,7 +20,8 @@ public sealed class HeadphoneClient : IDisposable
     private byte sequence;
     public HeadphoneState State { get; private set; } = new();
     public DeviceProfile Profile=>State.Profile;
-    public bool Connected => socket != null;
+    private bool connected;
+    public bool Connected => connected;
     public event Action<StateChanges>? Changed;
     public event Action<string>? Log;
 
@@ -35,26 +34,56 @@ public sealed class HeadphoneClient : IDisposable
     public static async Task<List<(string Id,string Name)>> AllPairedAsync()=>
         (await DeviceInformation.FindAllAsync(BluetoothDevice.GetDeviceSelectorFromPairingState(true))).Select(d=>(d.Id,d.Name)).ToList();
 
+    public static async Task<IReadOnlyList<PairedHeadphone>> DiscoverConnectedAsync(string? rememberedId,string? rememberedModel,CancellationToken cancellationToken=default,Action<string>? diagnostic=null)
+    {
+        // The connection-status AQS selector can omit audio devices on some drivers.
+        // Use the pairing IDs (also used by manual Connect) and inspect their live
+        // status without requesting services or opening a control socket.
+        var all=await DeviceInformation.FindAllAsync(BluetoothDevice.GetDeviceSelectorFromPairingState(true)).AsTask(cancellationToken).WaitAsync(TimeSpan.FromSeconds(10),cancellationToken);
+        var remembered=DeviceCatalog.All.FirstOrDefault(p=>p.Id==rememberedModel);
+        var candidates=all
+            .Select(d=>(Device:d,Profile:DeviceCatalog.Detect(d.Name)??(d.Id==rememberedId?remembered:null)))
+            .Where(p=>p.Profile!=null).ToArray();
+        diagnostic?.Invoke($"{candidates.Length} recognized paired device(s).");
+        var connectedDevices=new List<PairedHeadphone>();
+        foreach(var candidate in candidates)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            using var lookup=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            lookup.CancelAfter(TimeSpan.FromSeconds(5));
+            try
+            {
+                using var paired=await BluetoothDevice.FromIdAsync(candidate.Device.Id).AsTask(lookup.Token);
+                diagnostic?.Invoke($"{candidate.Profile!.ShortName}: {(paired==null?"Windows access unavailable":paired.ConnectionStatus.ToString())}.");
+                if(paired?.ConnectionStatus==BluetoothConnectionStatus.Connected)connectedDevices.Add(new PairedHeadphone(candidate.Device.Id,candidate.Device.Name,candidate.Profile!));
+            }
+            catch(OperationCanceledException)when(!cancellationToken.IsCancellationRequested){diagnostic?.Invoke("Windows connection-status lookup timed out.");}
+        }
+        return connectedDevices;
+    }
+
     internal void SelectProfile(DeviceProfile profile)
     {
         if(Connected)throw new InvalidOperationException("Disconnect before changing the device profile.");
         State=new HeadphoneState(profile);Changed?.Invoke(StateChanges.Connection|StateChanges.Availability);
     }
 
-    public async Task ConnectAsync(PairedHeadphone selected)
+    public async Task ConnectAsync(PairedHeadphone selected,CancellationToken cancellationToken=default)
     {
         Dispose(); State = new(selected.Profile);
+        stop=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        var token=stop.Token;
         try
         {
-            device = await BluetoothDevice.FromIdAsync(selected.Id).AsTask().WaitAsync(TimeSpan.FromSeconds(15));
+            device = await BluetoothDevice.FromIdAsync(selected.Id).AsTask(token).WaitAsync(TimeSpan.FromSeconds(15),token);
             if (device == null) throw new IOException("Windows could not access the headphones. Check Bluetooth permissions and pairing.");
-            var services = await device.GetRfcommServicesForIdAsync(RfcommServiceId.FromUuid(ServiceId), BluetoothCacheMode.Uncached).AsTask().WaitAsync(TimeSpan.FromSeconds(20));
+            var services = await device.GetRfcommServicesForIdAsync(RfcommServiceId.FromUuid(ServiceId), BluetoothCacheMode.Uncached).AsTask(token).WaitAsync(TimeSpan.FromSeconds(20),token);
             if (services.Error != BluetoothError.Success || services.Services.Count == 0) throw new IOException("The Nothing control service is unavailable. Close Nothing X on your phone, check that the headphones are connected to Windows, then retry.");
             service = services.Services[0];
             socket = new StreamSocket();
-            await socket.ConnectAsync(service.ConnectionHostName, service.ConnectionServiceName, SocketProtectionLevel.BluetoothEncryptionAllowNullAuthentication).AsTask().WaitAsync(TimeSpan.FromSeconds(15));
-            stop = new();
-            _ = ReadLoopAsync(socket, stop.Token);
+            await socket.ConnectAsync(service.ConnectionHostName, service.ConnectionServiceName, SocketProtectionLevel.BluetoothEncryptionAllowNullAuthentication).AsTask(token).WaitAsync(TimeSpan.FromSeconds(15),token);
+            connected=true;
+            _ = ReadLoopAsync(socket, token);
             Log?.Invoke("Connected to Nothing's control service.");
             Changed?.Invoke(StateChanges.Connection);
         }
@@ -176,6 +205,7 @@ public sealed class HeadphoneClient : IDisposable
     public void Dispose()
     {
         bool wasConnected=Connected;
+        connected=false;
         stop?.Cancel(); stop?.Dispose(); stop = null;
         socket?.Dispose(); socket = null;
         service?.Dispose(); service = null;

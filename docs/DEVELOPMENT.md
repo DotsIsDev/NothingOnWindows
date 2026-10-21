@@ -9,18 +9,18 @@ dotnet build NothingOnWindows.csproj -c Release
 dotnet run --project tests/ProtocolChecks.csproj -c Release
 ```
 
-The initial release passes 321 offline core checks and 314 WPF/window/tray checks. Core checks cover framing and CRC, request/notification correlation, EQ serialization/headroom, invalid input, batteries/charging, firmware gates, all 11 identities, model-specific reads and control mappings, and read-only synchronization.
+The current release passes 341 offline core checks and 323 WPF/window/tray checks. Core checks cover framing and CRC, request/notification correlation, EQ serialization/headroom, invalid input, batteries/charging, firmware gates, all 11 identities, model-specific reads and control mappings, and read-only synchronization.
 
 UI checks cover all six views for all 11 profiles at default and minimum size, embedded photos, profile selection, eight resize edges, the portrait ratio, tray lifecycle, single-instance activation, differing preset graphs, deferred state updates, advanced draft preservation, and rejection of unsupported writes. They inject simulated packets and send no headphone writes.
 
 Run UI checks or capture disconnected screenshots with a built application:
 
 ```powershell
-artifacts/releases/v0.1.0/NothingOnWindows/NothingOnWindows.exe --ui-smoke artifacts/ui-smoke.json
-artifacts/releases/v0.1.0/NothingOnWindows/NothingOnWindows.exe --snapshot artifacts/preview.png
+artifacts/releases/v0.1.1/NothingOnWindows/NothingOnWindows.exe --ui-smoke artifacts/ui-smoke.json
+artifacts/releases/v0.1.1/NothingOnWindows/NothingOnWindows.exe --snapshot artifacts/preview.png
 ```
 
-Snapshot mode exports Sound, Equalizer, Advanced, Controls, Explore, and Connection images. `--live` requests read-only connected-device data; `--catalog` requests the online catalog. The README uses disconnected previews.
+Snapshot mode exports Sound, Equalizer, Advanced, Controls, Explore, and Connection images. `--live` requests read-only connected-device data; `--catalog` requests the online catalog. `--auto` exercises the normal automatic discovery/connection path, reads settings only, and writes a small connection-status report beside the screenshots. The README uses disconnected previews.
 
 ## Hardware validation
 
@@ -41,9 +41,12 @@ Write tests never run during normal startup, packaging, screenshot capture, or o
 ## Release packaging
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.0
+powershell -ExecutionPolicy Bypass -File tools/PublishRelease.ps1 -Version 0.1.1
 ```
 
-This produces `artifacts/releases/v0.1.0/` with a self-contained Windows x64 application ZIP, matching source ZIP, and `SHA256SUMS.txt`. Packaging refuses to overwrite an existing release folder. Choose a new version or a fresh `-OutputDirectory` for a rebuild. `-RuntimeVersion` selects the bundled .NET patch; the initial release uses 10.0.13. `-SkipUiChecks` is available for environments without a desktop; run UI checks on a Windows desktop before publishing.
+This produces `artifacts/releases/v0.1.1/` with a self-contained Windows x64 application ZIP, matching source ZIP, and `SHA256SUMS.txt`. Packaging refuses to overwrite an existing release folder. Choose a new version or a fresh `-OutputDirectory` for a rebuild. `-RuntimeVersion` selects the bundled .NET patch; the initial release uses 10.0.13. `-SkipUiChecks` is available for environments without a desktop; run UI checks on a Windows desktop before publishing.
 
 The source archive uses Git's tracked and nonignored file list, including working changes. It omits `.git`, runtime caches, build outputs, research downloads, and local artifacts. Keep new local-only files ignored. The portable application includes `Source.zip`, license/attribution files, image provenance, and documentation.
+
+Automatic-connection checks cover last-device preference, ambiguous device selection, no-device startup, later Bluetooth connections, retry cooldowns, overlapping discovery, manual suspension/resume, shutdown or manual activity during discovery, and legacy preference migration. Startup UI checks use a fake registration service; they never modify the real Windows startup entry. Normal diagnostics and screenshots do not start automatic connection unless explicitly passed --auto.
+

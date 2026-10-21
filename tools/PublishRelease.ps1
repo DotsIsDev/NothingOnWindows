@@ -1,5 +1,5 @@
 param(
-    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.0',
+    [ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version = '0.1.1',
     [ValidatePattern('^\d+\.\d+\.\d+$')][string]$RuntimeVersion = '10.0.13',
     [string]$OutputDirectory,
     [switch]$SkipUiChecks
@@ -32,7 +32,7 @@ try {
         $checkProcess = Start-Process -FilePath (Join-Path $appRoot 'NothingOnWindows.exe') -ArgumentList '--ui-smoke', ('"' + $checkReport + '"') -WindowStyle Hidden -Wait -PassThru
         if ($checkProcess.ExitCode -ne 0) { throw "UI checks failed. See $checkReport" }
         $result = Get-Content -LiteralPath $checkReport -Raw | ConvertFrom-Json
-        if ($result.passed -lt 314 -or $result.headphoneWrites -ne $false) { throw 'UI report is incomplete or reported hardware writes.' }
+        if ($result.passed -lt 323 -or $result.headphoneWrites -ne $false) { throw 'UI report is incomplete or reported hardware writes.' }
         Write-Host "Passed $($result.passed) offline UI/window/tray checks."
     }
 
@@ -69,3 +69,4 @@ try {
     Write-Host "Release ready: $releaseRoot"
 }
 finally { Pop-Location }
+

@@ -5,6 +5,8 @@ namespace NothingOnWindows.Core;
 public sealed record AppPreferences
 {
     public bool CloseToTray { get; init; }
+    public string? LastDeviceId { get; init; }
+    public string? LastDeviceModel { get; init; }
 }
 
 public sealed class PreferencesStore(string? path = null)

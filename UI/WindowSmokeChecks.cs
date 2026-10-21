@@ -206,6 +206,25 @@ public partial class MainWindow
         Check(WindowState==WindowState.Minimized,"Custom minimize button works");
         ShowFromTray();await Idle();Check(IsVisible&&ShowInTaskbar&&WindowState==WindowState.Normal,"Restore from tray works");
         PreviewPage("Connection");await Idle();
+        var startup=Find<ToggleButton>(PageContent,"StartWithWindowsToggle");
+        Check(startup.IsChecked==false&&startup.Style==FindResource("GlassSwitch"),"Start with Windows defaults off and uses a glass toggle");
+        startup.IsChecked=true;startup.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        Check(startupRegistration.Enabled,"Startup toggle registers startup using an isolated fake service");
+        Render();startup=Find<ToggleButton>(PageContent,"StartWithWindowsToggle");
+        Check(startup.IsChecked==true,"Startup toggle reflects the actual registration on redraw");
+        ((SmokeStartupRegistration)startupRegistration).FailNext=true;
+        startup.IsChecked=false;startup.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        Check(startup.IsChecked==true&&startupRegistration.Enabled&&StatusLabel.Text.Contains("Could not change"),"Failed startup change restores the previous toggle state");
+        startup.IsChecked=false;startup.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        Check(!startupRegistration.Enabled,"Startup toggle removes registration");
+        Check(WindowsStartupRegistration.CommandFor(@"C:\Apps with spaces\NothingOnWindows.exe")=="\"C:\\Apps with spaces\\NothingOnWindows.exe\" --startup","Startup command quotes the executable and includes tray-start argument");
+        bool invalidStartup=false;try{WindowsStartupRegistration.CommandFor("relative.exe");}catch(IOException){invalidStartup=true;}
+        Check(invalidStartup,"Startup rejects a relative executable path");
+        invalidStartup=false;try{WindowsStartupRegistration.CommandFor("C:\\"+new string('a',255)+"\\NothingOnWindows.exe");}catch(IOException){invalidStartup=true;}
+        Check(invalidStartup,"Startup rejects commands beyond the Windows Run limit");
+        HideForWindowsStartup();await Idle();
+        Check(!IsVisible&&tray?.Visible==true,"Windows startup launch can remain quietly in the tray");
+        ShowFromTray();await Idle();
         var checkbox=Find<ToggleButton>(PageContent,"CloseToTrayToggle");
         Check(checkbox is not CheckBox&&checkbox.Style==FindResource("GlassSwitch"),"Close-to-tray uses accessible glass toggle");
         checkbox.IsChecked=true;checkbox.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -220,7 +239,7 @@ public partial class MainWindow
         bool closed=false;Closed+=(_,_)=>closed=true;tray!.InvokeMenu(3);await Idle();
         Check(closed&&tray==null,"Explicit Exit closes and disposes tray even when close-to-tray is enabled");
         string defaultSettings=reportPath+".default-settings.json";new PreferencesStore(defaultSettings).Save(new AppPreferences());
-        var normalClose=new MainWindow(defaultSettings);bool normalClosed=false;normalClose.Closed+=(_,_)=>normalClosed=true;normalClose.Show();await Idle();normalClose.InitializeTray();
+        var normalClose=new MainWindow(defaultSettings,new SmokeStartupRegistration());bool normalClosed=false;normalClose.Closed+=(_,_)=>normalClosed=true;normalClose.Show();await Idle();normalClose.InitializeTray();
         normalClose.CloseButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));await Idle();
         Check(normalClosed&&normalClose.tray==null,"Custom close exits and disposes tray when preference is disabled");
         File.WriteAllText(reportPath,JsonSerializer.Serialize(new{passed=checks.Count,checks,syntheticPresetData=true,syntheticDeviceUpdates=true,deviceProfiles=DeviceCatalog.All.Count,modelImages=photoHashes.Count,headphoneWrites=false},new JsonSerializerOptions{WriteIndented=true}));
@@ -229,5 +248,16 @@ public partial class MainWindow
     {
         [StructLayout(LayoutKind.Sequential)]internal struct Rect{public int Left,Top,Right,Bottom;}
         [DllImport("user32.dll")]internal static extern IntPtr SendMessage(IntPtr hwnd,int message,IntPtr wParam,IntPtr lParam);
+    }
+}
+
+internal sealed class SmokeStartupRegistration : IStartupRegistration
+{
+    public bool Enabled {get;private set;}
+    public bool FailNext {get;set;}
+    public void SetEnabled(bool enabled)
+    {
+        if(FailNext){FailNext=false;throw new IOException("Simulated Windows startup access failure.");}
+        Enabled=enabled;
     }
 }

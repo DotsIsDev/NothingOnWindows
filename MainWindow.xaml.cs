@@ -24,6 +24,8 @@ public partial class MainWindow : Window
     private string eqTab = "Simple";
     private bool busy;
     private readonly PreferencesStore preferencesStore;
+    private readonly IStartupRegistration startupRegistration;
+    private readonly CancellationTokenSource windowLifetime=new();
     private AppPreferences preferences = new();
     private TrayController? tray;
     private bool exitRequested;
@@ -32,8 +34,11 @@ public partial class MainWindow : Window
     private readonly Brush muted = new SolidColorBrush(Color.FromRgb(170, 170, 170));
     private string? imageModel;
 
-    public MainWindow(string? preferencesPath = null)
+    public MainWindow(string? preferencesPath = null):this(preferencesPath,new WindowsStartupRegistration()) { }
+
+    internal MainWindow(string? preferencesPath,IStartupRegistration startupRegistration)
     {
+        this.startupRegistration=startupRegistration;
         InitializeComponent();
         MaxHeight=Math.Max(MinHeight,SystemParameters.WorkArea.Height-32);
         MaxWidth=MaxHeight*AspectRatioSizing.PortraitRatio;
@@ -50,7 +55,7 @@ public partial class MainWindow : Window
         client.Log += s => { lock (log) { log.Add($"{DateTime.Now:HH:mm:ss} {s}"); if (log.Count > 600) log.RemoveAt(0); } };
         client.Changed += QueueDeviceChanges;
         liveUpdates.Tick+=(_,_)=>ApplyDeviceChanges();
-        Closed += (_, _) => { windowClosed=true;poll.Stop();liveUpdates.Stop();client.Changed-=QueueDeviceChanges; client.Dispose(); tray?.Dispose(); tray=null; aspectRatio.Dispose(); };
+        Closed += (_, _) => { windowClosed=true;automaticConnections.Stop();automaticConnection?.Suspend();windowLifetime.Cancel();poll.Stop();liveUpdates.Stop();client.Changed-=QueueDeviceChanges; client.Dispose(); tray?.Dispose(); tray=null; aspectRatio.Dispose(); };
         poll.Tick += async (_, _) => await SynchronizeDeviceAsync();
         Activated+=async(_,_)=>await SynchronizeDeviceAsync();
         poll.Start();
@@ -438,6 +443,22 @@ public partial class MainWindow : Window
         System.Windows.Automation.AutomationProperties.SetName(closeToTray,"Closing app minimizes to tray");
         closeToTray.Click+=(_,_)=>{try{var next=preferences with{CloseToTray=closeToTray.IsChecked==true};preferencesStore.Save(next);preferences=next;UpdateHeader();StatusLabel.Text="App preference saved.";}catch(Exception ex){closeToTray.IsChecked=preferences.CloseToTray;StatusLabel.Text=ex.Message;}};
         app.Children.Add(row);
+        var startupRow=new Grid{Margin=new Thickness(0,20,0,3)};
+        startupRow.ColumnDefinitions.Add(new ColumnDefinition());startupRow.ColumnDefinitions.Add(new ColumnDefinition{Width=GridLength.Auto});
+        var startupDetails=new StackPanel{Margin=new Thickness(0,0,18,0)};
+        var startupTitle=Text("Start with Windows",14);startupTitle.Margin=new Thickness(0,0,0,7);startupDetails.Children.Add(startupTitle);
+        var startupHint=Text("Open quietly in the tray when you sign in. Enable again after moving the app folder.",11,muted);startupHint.Margin=new Thickness(0);startupDetails.Children.Add(startupHint);startupRow.Children.Add(startupDetails);
+        bool startupEnabled=false;string? startupError=null;
+        try{startupEnabled=startupRegistration.Enabled;}catch(Exception ex){startupError=ex.Message;}
+        var startWithWindows=new System.Windows.Controls.Primitives.ToggleButton{Name="StartWithWindowsToggle",Style=(Style)FindResource("GlassSwitch"),IsChecked=startupEnabled,VerticalAlignment=VerticalAlignment.Center,IsEnabled=startupError==null,ToolTip=startupError};
+        System.Windows.Automation.AutomationProperties.SetName(startWithWindows,"Start with Windows");Grid.SetColumn(startWithWindows,1);startupRow.Children.Add(startWithWindows);
+        startWithWindows.Click+=(_,_)=>
+        {
+            bool requested=startWithWindows.IsChecked==true;
+            try{startupRegistration.SetEnabled(requested);startupEnabled=startupRegistration.Enabled;startWithWindows.IsChecked=startupEnabled;StatusLabel.Text=startupEnabled?"The app will start in the tray when you sign in.":"Start with Windows is off.";}
+            catch(Exception ex){startWithWindows.IsChecked=startupEnabled;StatusLabel.Text="Could not change startup settings: "+ex.Message;}
+        };
+        app.Children.Add(startupRow);
         var deviceProfile=Card("Device profile","Recognized models are selected automatically when you connect. You can preview any model while disconnected.");
         var models=new ComboBox{Name="DeviceProfileSelector",ItemsSource=DeviceCatalog.All,SelectedItem=client.Profile,IsEnabled=!client.Connected&&!busy,HorizontalAlignment=HorizontalAlignment.Stretch};
         System.Windows.Automation.AutomationProperties.SetName(models,"Device profile");
@@ -447,7 +468,7 @@ public partial class MainWindow : Window
         if(client.Profile.Notes.Length>0)deviceProfile.Children.Add(Text(client.Profile.Notes,11,muted));
         var setup = Card("Connection", "");
         var connectionActions=new WrapPanel();connectionActions.Children.Add(ActionButton(client.Connected?"Disconnect":"Connect",()=>Connect_Click(this,new RoutedEventArgs()),!busy));connectionActions.Children.Add(ActionButton("Refresh",()=>Refresh_Click(this,new RoutedEventArgs()),client.Connected&&!busy));setup.Children.Add(connectionActions);
-        setup.Children.Add(Text("1. Pair your Nothing audio device in Windows Bluetooth settings.\n\n2. Power it on, or take the earbuds out of their case.\n\n3. Select Connect. If connecting fails, close Nothing X on your phone and retry.", 14));
+        setup.Children.Add(Text("Connected Nothing devices are picked up automatically. With multiple devices, the last one you selected is preferred. Use Connect to choose a device or retry.\n\nPair in Windows first, then power on your device or take the earbuds out of their case. If connecting fails, close Nothing X on your phone.", 14));
         setup.Children.Add(ActionButton("Connect a renamed device…",async()=>await ConnectRenamedAsync(),!client.Connected&&!busy));
         setup.Children.Add(ActionButton("Open Bluetooth settings ↗", () => Process.Start(new ProcessStartInfo("ms-settings:bluetooth") { UseShellExecute = true })));
         var info = Card("About", "");
@@ -464,7 +485,8 @@ public partial class MainWindow : Window
     }
     private async void Connect_Click(object sender, RoutedEventArgs e)
     {
-        if (client.Connected) { client.Dispose(); Render(); StatusLabel.Text = "Disconnected from the control service."; return; }
+        if(busy)return;
+        if (client.Connected) { automaticConnection?.Suspend();client.Dispose(); Render(); StatusLabel.Text = "Disconnected. Automatic connection is paused until you reconnect or restart the app."; return; }
         await Run(async () => {
             var devices = await HeadphoneClient.DiscoverAsync();
             if (devices.Count == 0) throw new IOException("No recognized Nothing audio device found. Pair your device in Windows Bluetooth settings, or use Connect a renamed device in Settings.");
@@ -478,16 +500,17 @@ public partial class MainWindow : Window
                 if (chooser.ShowDialog() != true) return;
                 selected = (PairedHeadphone)list.SelectedItem;
             }
-            await client.ConnectAsync(selected); await client.RefreshAsync(); draft = client.State.Bands?.ToArray() ?? draft;draftDirty=false;lastBatteryRead=Environment.TickCount64;
+            await ConnectDeviceAsync(selected);
         }, "Connected. Available settings have been read from your headphones.");
     }
     private async void Refresh_Click(object sender, RoutedEventArgs e) => await Run(() => client.RefreshAsync(), "Device settings refreshed.");
-    private async Task Run(Func<Task> work, string success, bool render = true)
+    private async Task Run(Func<Task> work, string success, bool render = true,string progress="Updating…")
     {
         if (busy) return;
-        busy = true; StatusLabel.Text = "Updating…"; UpdateHeader(); PageContent.IsEnabled = false;
+        if(windowClosed)return;
+        busy = true; StatusLabel.Text = progress; UpdateHeader(); PageContent.IsEnabled = false;
         try { await work(); StatusLabel.Text = success; }
         catch (Exception ex) { StatusLabel.Text = ex is TimeoutException ? "The headphones did not respond. Refresh or reconnect and try again." : ex.Message; }
-        finally { busy = false; PageContent.IsEnabled = true; if (render) Render(); else UpdateHeader(); }
+        finally { busy = false; if(!windowClosed){PageContent.IsEnabled = true; if (render) Render(); else UpdateHeader();} }
     }
 }

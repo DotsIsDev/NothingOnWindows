@@ -170,4 +170,42 @@ Check(earACaptured.Battery==60&&earACaptured.Charging&&earACaptured.Batteries.Si
 earACaptured.Apply(new Frame(0x400e,1,[1,1,0]));Check(earACaptured.InEar==false,"Community Ear (a) wearing detection response fixture");
 earACaptured.Apply(new Frame(0x400e,1,[2,7,0,1,1]));Check(earACaptured.InEar==true,"Wearing detection locates feature type one in a multi-feature response");
 Check(Convert.ToHexString(Protocol.Encode(0xf004,1,[1,1,0]))=="55600104F0030001010100B864","Community wearing detection write wire fixture");
+var autoA=new PairedHeadphone("synthetic-a","Nothing Headphone (a)",DeviceCatalog.HeadphoneA);
+var autoB=new PairedHeadphone("synthetic-b","Nothing Ear (a)",earA);
+Check(AutomaticConnection.Select([],null)==null,"No automatic connection without a connected device");
+Check(AutomaticConnection.Select([autoA],null)==autoA,"A single connected device is selected automatically");
+Check(AutomaticConnection.Select([autoA,autoB],autoB.Id)==autoB,"Multiple connected devices prefer the last selected one");
+Check(AutomaticConnection.Select([autoA,autoB],"absent")==null,"Ambiguous connected devices require manual selection");
+Check(AutomaticConnection.Select([autoA],autoB.Id)==autoA,"A stale remembered device does not block the sole connected device");
+long autoClock=0;int discoveries=0,connections=0;bool available=true;
+IReadOnlyList<PairedHeadphone> candidates=[autoA];
+var automatic=new AutomaticConnection(()=>{discoveries++;return Task.FromResult(candidates);},_=>{connections++;return Task.CompletedTask;},()=>available,()=>null,()=>autoClock);
+await automatic.TickAsync();Check(discoveries==1&&connections==1,"Automatic startup opens the control connection for an eligible device");
+await automatic.TickAsync();Check(discoveries==1,"Automatic retries respect the cooldown");
+autoClock=30000;await automatic.TickAsync();Check(connections==2,"Automatic connection retries after its cooldown");
+available=false;autoClock=60000;await automatic.TickAsync();Check(discoveries==2,"Connected, busy, or closed app does not rediscover devices");
+available=true;automatic.Suspend();await automatic.TickAsync();Check(connections==2,"Manual disconnect suspends automatic connection");
+automatic.Resume();await automatic.TickAsync();Check(connections==3,"Explicit reconnect resumes automatic connection");
+candidates=[];autoClock=90000;await automatic.TickAsync();Check(connections==3,"An offline device is never opened by automatic connection");
+autoClock=94999;await automatic.TickAsync();Check(discoveries==4,"Empty discovery uses a five-second interval");
+candidates=[autoA];autoClock=95000;await automatic.TickAsync();Check(connections==4,"A later Bluetooth connection is picked up without restarting");
+var discoveryGate=new TaskCompletionSource<IReadOnlyList<PairedHeadphone>>(TaskCreationOptions.RunContinuationsAsynchronously);
+int concurrentScans=0,concurrentOpens=0;bool canOpen=true;
+var guarded=new AutomaticConnection(()=>{concurrentScans++;return discoveryGate.Task;},_=>{concurrentOpens++;return Task.CompletedTask;},()=>canOpen,()=>null);
+var firstScan=guarded.TickAsync();await guarded.TickAsync();Check(concurrentScans==1,"Overlapping timer ticks share one discovery attempt");
+canOpen=false;discoveryGate.SetResult([autoA]);await firstScan;Check(concurrentOpens==0,"Manual activity or closing during discovery prevents a late automatic open");
+long failureClock=0;int failures=0;
+var failing=new AutomaticConnection(()=>Task.FromResult<IReadOnlyList<PairedHeadphone>>([autoA]),_=>{failures++;throw new IOException("Busy service");},()=>true,()=>null,()=>failureClock);
+try{await failing.TickAsync();}catch(IOException){}
+failureClock=29999;await failing.TickAsync();Check(failures==1,"Failed connection is not immediately retried");
+failureClock=30000;try{await failing.TickAsync();}catch(IOException){}Check(failures==2,"Failed connection becomes eligible after backoff");
+string rememberedPath=Path.Combine(Directory.GetCurrentDirectory(),"artifacts","remembered-device-"+Guid.NewGuid()+".json");
+try
+{
+    var store=new PreferencesStore(rememberedPath);
+    store.Save(new AppPreferences{CloseToTray=true,LastDeviceId=autoA.Id,LastDeviceModel=autoA.Profile.Id});
+    var remembered=store.Load();Check(remembered.CloseToTray&&remembered.LastDeviceId==autoA.Id&&remembered.LastDeviceModel==autoA.Profile.Id,"Remembered device and model persist with existing tray preference");
+    File.WriteAllText(rememberedPath,"{\"CloseToTray\":true}");Check(store.Load().LastDeviceId==null&&store.Load().CloseToTray,"Earlier settings migrate without a remembered device");
+}
+finally{if(File.Exists(rememberedPath))File.Delete(rememberedPath);}
 Console.WriteLine($"Passed {checks} total checks.");

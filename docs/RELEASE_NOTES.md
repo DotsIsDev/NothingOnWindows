@@ -1,28 +1,30 @@
-# Nothing on Windows v0.1.0
+# Nothing on Windows v0.1.1
 
-First public release of an unofficial native Windows companion for Nothing audio devices.
+Automatic connection and Windows startup support for the unofficial Nothing audio companion.
+
+## New
+
+- Automatically opens the control connection for an already connected Nothing Bluetooth device, at app launch and after later Bluetooth connections or drops. Checks every five seconds; failed control connections retry after 30 seconds.
+- Prefers your last successful device when several are connected. Renamed devices retain their selected model. Ambiguous devices still use the manual chooser.
+- Choosing Disconnect pauses automatic connection until you reconnect manually or restart the app.
+- **Settings → Application → Start with Windows**: optional, off by default, launches quietly in the tray at sign-in. Registration is per Windows account and needs no administrator access. Enable it again after moving the extracted app folder.
+- Shutdown cancels pending Bluetooth connection work. Diagnostics and offline checks do not auto-connect unless explicitly requested.
 
 ## Download
 
-- **NothingOnWindows-v0.1.0-win-x64.zip**: portable Windows x64 app with .NET 10.0.13 included. Extract the entire ZIP and open `NothingOnWindows/NothingOnWindows.exe`. Requires Windows 10 build 19041 or newer and Bluetooth support. No separate runtime installation is needed.
-- **NothingOnWindows-v0.1.0-source.zip**: corresponding application, tests, documentation, assets, and packaging source. Also included as `Source.zip` inside the portable package.
-- **SHA256SUMS.txt**: SHA-256 checksums for both archives.
+- **NothingOnWindows-v0.1.1-win-x64.zip**: portable Windows x64 app including .NET 10.0.13. Extract the whole ZIP and open `NothingOnWindows/NothingOnWindows.exe`. Requires Windows 10 build 19041 or newer and Bluetooth.
+- **NothingOnWindows-v0.1.1-source.zip**: corresponding source, also included as `Source.zip` inside the portable package.
+- **SHA256SUMS.txt**: checksums for both archives.
 
-## Included
+Exit the older app from its tray menu before opening the update. The app remains unsigned.
 
-- Black glass interface, compact resizable portrait window, pixel-art app icon, custom window buttons, and system tray support.
-- Model-specific sound, EQ, bass, spatial audio, low lag, wearing detection, and gesture controls where available.
-- Simple and eight-band advanced EQ, local custom profiles, and Nothing Playground community profiles.
-- Device notifications and read-only polling to refresh settings changed using physical controls.
-- Eleven Nothing audio profiles, each with a distinct official product photo; automatic recognition, disconnected previews, and manual selection for renamed devices.
-- README with six software screenshots and a detailed device/firmware capability matrix.
+## Validation and compatibility
 
-## Compatibility and validation
+341 offline core checks and 323 UI/window/tray checks. Startup tests use an isolated fake service and never enable real Windows startup. Packaging sends no headphone writes.
 
-**Headphone (a), firmware 1.0.1.51, is the only hardware-tested model. The other ten profiles are experimental.** See [device support](https://github.com/DotsIsDev/NothingOnWindows/blob/main/DEVICE_SUPPORT.md) for firmware requirements and feature limits.
+Headphone (a), firmware 1.0.1.51, is the only hardware-tested model. The other ten profiles remain experimental. See [device support](https://github.com/DotsIsDev/NothingOnWindows/blob/main/DEVICE_SUPPORT.md) for firmware requirements and limitations.
 
-Validation: 321 offline core checks and 314 offline UI/window/tray checks. Packaging and screenshot capture send no headphone writes. Earlier Headphone (a) hardware tests verified setting writes/readbacks, including two custom EQ profiles, and restored the original settings.
+Code is AGPL-3.0-or-later. Runtime licenses and third-party attribution are bundled. Nothing product photos and names belong to their respective owners and are separate from the code license. This project is not affiliated with or endorsed by Nothing.
 
-The app is unsigned. Firmware updates, automatic reconnect, Nothing X QR sharing, phone-only integrations, Personal Sound, Auracast, and proprietary Headphone (1) Pro spatial/driver processing are not included. Broader physical-device and button-synchronization testing is still needed.
+Live automatic discovery and control connection were verified with Headphone (a) connected to Windows. Device settings were read without any headphone writes.
 
-Code is AGPL-3.0-or-later. Nothing names and product photographs belong to their respective owners and are separate from the code license. This project is not affiliated with or endorsed by Nothing. See the bundled license and third-party notices.
